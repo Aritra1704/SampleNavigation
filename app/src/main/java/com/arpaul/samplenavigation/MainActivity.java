@@ -1,5 +1,8 @@
 package com.arpaul.samplenavigation;
 
+import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +16,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -21,6 +26,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
     private NavigationView navigationView;
+    private TextView tvActualText;
+    private Button btnSecond, btnThird;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,18 +48,60 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+        btnSecond.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SecondActivity.class));
+            }
+        });
+
+        btnThird.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ThirdActivity.class));
+            }
+        });
 
         Menu menu = navigationView.getMenu();
         menu.addSubMenu(2, 2, 100, "Item 1");
+        menu.addSubMenu(3, 3, 200, "Item 2");
         SubMenu submenu = menu.findItem(2).getSubMenu();
         if(submenu != null) {
             submenu.clear();
         }
         submenu.add(2, 1 , Menu.NONE, "Test item1 submenu");
         submenu.add(2, 2 , Menu.NONE, "Test item2 submenu");
-        menu.setGroupCheckable(2, true, true);
-        menu.setGroupVisible(2, true);
 
+        submenu = menu.findItem(3).getSubMenu();
+        if(submenu != null) {
+            submenu.clear();
+        }
+        submenu.add(3, 3 , Menu.NONE, "Test item3 submenu");
+//        menu.setGroupCheckable(2, true, true);
+//        menu.setGroupVisible(2, true);
+
+
+        tvActualText.setText("Hello\nWorld");
+
+
+        // FOR NAVIGATION VIEW ITEM TEXT COLOR
+//        int[][] state = new int[][] {
+//                new int[] {-android.R.attr.state_enabled}, // disabled
+//                new int[] {android.R.attr.state_enabled}, // enabled
+//                new int[] {-android.R.attr.state_checked}, // unchecked
+//                new int[] { android.R.attr.state_pressed}  // pressed
+//
+//        };
+//
+//        int[] color = new int[] {
+//                Color.YELLOW,
+//                Color.BLUE,
+//                Color.YELLOW,
+//                Color.YELLOW
+//        };
+//
+//        ColorStateList csl = new ColorStateList(state, color);
+//        navigationView.setItemTextColor(csl);
     }
 
     @Override
@@ -116,6 +166,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
 
+
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -123,5 +174,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        tvActualText = (TextView) findViewById(R.id.tvActualText);
+        btnSecond = (Button) findViewById(R.id.btnSecond);
+        btnThird = (Button) findViewById(R.id.btnThird);
     }
 }

@@ -5,4 +5,11 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string-array name="nav_array">
+        <item>List</item>
+        <item>Grid</item>
+        <item>Pager</item>
+        <item>Blank</item>
+    </string-array>
 </resources>
