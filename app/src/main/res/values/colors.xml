@@ -7,4 +7,6 @@
     <color name="color_DarkGrey">#505050</color>
     <color name="color_White">#FFFFFF</color>
     <color name="color_Black">#000000</color>
+
+    <color name="group_divider_color">#80CBC4</color>
 </resources>

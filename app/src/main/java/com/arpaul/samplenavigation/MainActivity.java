@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ActionBarDrawerToggle toggle;
     private NavigationView navigationView;
     private TextView tvActualText;
-    private Button btnSecond, btnThird;
+    private Button btnSecond, btnThird, btnFourth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +59,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, ThirdActivity.class));
+            }
+        });
+
+        btnFourth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, FourthActivity.class));
             }
         });
 
@@ -176,7 +183,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         tvActualText = (TextView) findViewById(R.id.tvActualText);
+
         btnSecond = (Button) findViewById(R.id.btnSecond);
         btnThird = (Button) findViewById(R.id.btnThird);
+        btnFourth = (Button) findViewById(R.id.btnFourth);
     }
 }

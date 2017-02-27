@@ -40,11 +40,13 @@
 
     </android.support.design.widget.CoordinatorLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvNavList"
-        android:layout_width="240dp"
+    <ExpandableListView
+        android:id="@+id/navList"
+        android:layout_width="@dimen/nav_drawer_width"
         android:layout_height="match_parent"
-        app:layoutManager="LinearLayoutManager">
-
-    </android.support.v7.widget.RecyclerView>
+        android:layout_gravity="left|start"
+        android:background="@color/color_White"
+        android:divider="@color/group_divider_color"
+        android:dividerHeight="@dimen/divider_height"
+        android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"/>
 </android.support.v4.widget.DrawerLayout>
